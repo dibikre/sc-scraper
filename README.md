@@ -214,14 +214,14 @@ Navigateur                        Serveur PHP (sc.php)              API SoundClo
     | [Clic "TÉLÉCHARGER"]                |                               |
     |                                     |                               |
     |-- GET sc.php?action=check_streams ->|                               |
-    |   &streams=[{index,url}...]         |-- GET stream_url?client_id=  ->|
+    |   &streams=[{index,url}...]         |-- GET stream_url?client_id= ->|
     |   &client_id=...                    |<-- { url: "https://..." } ----|
-    |   &track_authorization=...         |                               |
+    |   &track_authorization=...         |                                |
     |<-- { valid: [{index, url, ...}] } --|                               |
     |                                     |                               |
     | [Pour chaque segment HLS]           |                               |
     |-- GET segment.m4s ------------------------------------------------->|
-    |<-- données binaires -------------------------------------------------|
+    |<-- données binaires ------------------------------------------------|
     |                                     |                               |
     | Assemblage en mémoire (Blob)        |                               |
     | Déclenchement du téléchargement     |                               |
@@ -239,11 +239,11 @@ Les segments audio eux-mêmes (`*.m4s`, `*.ts`) sont servis depuis les CDN de So
 
 SoundCloud distribue ses fichiers audio via le protocole HLS (HTTP Live Streaming). Chaque flux est décrit par une playlist au format M3U8, laquelle référence une séquence de segments binaires. Les formats généralement disponibles sont :
 
-| Identifiant preset | Format audio | Protocole | Qualité |
-|--------------------|--------------|-----------|---------|
-| `mp3_0_1`          | MP3          | HLS       | Standard |
-| `aac_1_0`          | AAC/M4A      | HLS       | Standard |
-| `opus_0_1`         | Opus         | HLS       | Standard |
+| Identifiant preset | Format audio | Protocole | Qualité       |
+|--------------------|--------------|-----------|---------------|
+| `mp3_0_1`          | MP3          | HLS       | Standard      |
+| `aac_1_0`          | AAC/M4A      | HLS       | Standard      |
+| `opus_0_1`         | Opus         | HLS       | Standard      |
 | `mp3_1_0`          | MP3          | HLS       | Haute qualité |
 
 Certains flux peuvent être chiffrés (SAMPLE-AES). Le badge **CHIFFRÉ** est affiché dans l'interface lorsque c'est le cas. Ces flux restent téléchargeables mais leur déchiffrement est géré par FFmpeg dans le mode serveur (`telechargement.php`) ; le mode client peut ne pas les supporter selon le navigateur.
