@@ -1,6 +1,6 @@
 # SC Scraper
 
-Outil d'extraction de métadonnées SoundCloud et de téléchargement audio, déployable sur n'importe quel serveur PHP disposant de FFmpeg.
+Outil d'extraction de métadonnées SoundCloud et de téléchargement audio, déployable sur n'importe quel serveur PHP disposant de FFmpeg ou non.
 
 ---
 
