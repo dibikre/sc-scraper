@@ -1,0 +1,4 @@
+vendor/** linguist-vendored
+storage/** linguist-generated
+cache/** linguist-generated
+*.php linguist-language=PHP
